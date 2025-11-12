@@ -15,22 +15,22 @@ import {
 const items = [
   {
     title: "Orders",
-    url: "#",
+    url: "orders",
     icon: Package,
   },
   {
     title: "Buyers",
-    url: "#",
+    url: "buyers",
     icon: Users,
   },
   {
     title: "Items",
-    url: "#",
+    url: "items",
     icon: ShirtIcon,
   },
   {
     title: "Print",
-    url: "#",
+    url: "print",
     icon: Printer,
   },
 ];
@@ -40,7 +40,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>BZA Dashboard</SidebarGroupLabel>
+          <SidebarGroupLabel>BZA Dry Goods Trading</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
