@@ -11,19 +11,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { DataTableColumnHeader } from "@/components/data-table-column-header";
+import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
 import { Checkbox } from "@/components/ui/checkbox";
-
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type Buyer = {
-  id: string;
-  name: string;
-  address: string;
-  contact_no: string;
-  fb_link?: string;
-  orders: number;
-};
+import { Buyer } from "@/lib/types/buyer";
 
 export const columns: ColumnDef<Buyer>[] = [
   {
@@ -36,6 +26,7 @@ export const columns: ColumnDef<Buyer>[] = [
         }
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
+        className="mr-4"
       />
     ),
     cell: ({ row }) => (
@@ -43,6 +34,7 @@ export const columns: ColumnDef<Buyer>[] = [
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
         aria-label="Select row"
+        className="mr-4"
       />
     ),
     enableSorting: false,

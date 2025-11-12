@@ -1,5 +1,6 @@
-import { DataTable } from "@/components/data-table";
-import { columns, Buyer } from "./columns";
+import { DataTable } from "@/components/data-table/data-table";
+import { columns } from "./columns";
+import { Buyer } from "@/lib/types/buyer";
 
 async function getData(): Promise<Buyer[]> {
   // Fetch data from your API here.
