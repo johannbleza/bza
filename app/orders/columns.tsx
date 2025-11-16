@@ -13,9 +13,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Item } from "@/lib/types/item";
+import { Order } from "@/lib/types/order";
 
-export const columns: ColumnDef<Item>[] = [
+export const columns: ColumnDef<Order>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -41,24 +41,24 @@ export const columns: ColumnDef<Item>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "name",
+    accessorKey: "items",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={"Name"} />
+      <DataTableColumnHeader column={column} title={"Items"} />
     ),
   },
   {
-    accessorKey: "source",
+    accessorKey: "buyer",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={"Source"} />
+      <DataTableColumnHeader column={column} title={"Buyer"} />
     ),
   },
   {
-    accessorKey: "retail_price",
+    accessorKey: "amount",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={"Retail Price"} />
+      <DataTableColumnHeader column={column} title={"Amount"} />
     ),
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("retail_price"));
+      const amount = parseFloat(row.getValue("amount"));
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "PHP",
@@ -68,12 +68,12 @@ export const columns: ColumnDef<Item>[] = [
     },
   },
   {
-    accessorKey: "sale_price",
+    accessorKey: "balance",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={"Sale Price"} />
+      <DataTableColumnHeader column={column} title={"Balance"} />
     ),
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("sale_price"));
+      const amount = parseFloat(row.getValue("balance"));
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "PHP",
@@ -83,9 +83,9 @@ export const columns: ColumnDef<Item>[] = [
     },
   },
   {
-    accessorKey: "stock",
+    accessorKey: "status",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={"Stock"} />
+      <DataTableColumnHeader column={column} title={"Status"} />
     ),
   },
   {

@@ -1,80 +1,80 @@
 import { DataTable } from "@/components/data-table/data-table";
 import { columns } from "./columns";
-import { Item } from "@/lib/types/item";
+import { Order } from "@/lib/types/order";
 
-async function getData(): Promise<Item[]> {
+async function getData(): Promise<Order[]> {
   // Fetch data from your API here.
 
   return [
     {
-      name: "Graphic Tee",
-      source: "Shopee",
-      retail_price: 350,
-      sale_price: 700,
-      stock: 12,
+      items: "Tshirt, Mug",
+      buyer: "Alice Johnson",
+      amount: 120.5,
+      balance: 0,
+      status: "paid",
     },
     {
-      name: "Denim Jacket",
-      source: "Lazada",
-      retail_price: 1200,
-      sale_price: 1800,
-      stock: 5,
+      items: "Notebook (3), Sticker Pack (1)",
+      buyer: "Bob Smith",
+      amount: 45.0,
+      balance: 0,
+      status: "shipped",
     },
     {
-      name: "Running Shoes",
-      source: "Amazon",
-      retail_price: 2500,
-      sale_price: 3200,
-      stock: 8,
+      items: "Wireless Headphones (1), USB-C Cable (2)",
+      buyer: "Carla Reyes",
+      amount: 320.0,
+      balance: 120.0,
+      status: "partial",
     },
     {
-      name: "Wireless Earbuds",
-      source: "eBay",
-      retail_price: 800,
-      sale_price: 1500,
-      stock: 20,
+      items: "Gift Card",
+      buyer: "Dmitri Ivanov",
+      amount: 0,
+      balance: 0,
+      status: "cancelled",
     },
     {
-      name: "Leather Wallet",
-      source: "Etsy",
-      retail_price: 400,
-      sale_price: 900,
-      stock: 7,
+      items: "Water Bottle (1), Cap (1)",
+      buyer: "Ella Zhang",
+      amount: 89.99,
+      balance: 0,
+      status: "paid",
     },
     {
-      name: "Smartwatch",
-      source: "Walmart",
-      retail_price: 2000,
-      sale_price: 2800,
-      stock: 4,
+      items: "Office Chair (1)",
+      buyer: "Faisal Khan",
+      amount: 150.0,
+      balance: 150.0,
+      status: "pending",
     },
     {
-      name: "Phone Case",
-      source: "AliExpress",
-      retail_price: 100,
-      sale_price: 250,
-      stock: 30,
+      items: "Bluetooth Speaker (1)",
+      buyer: "Grace Lee",
+      amount: 200.0,
+      balance: 0,
+      status: "refunded",
     },
     {
-      name: "Backpack",
-      source: "Tokopedia",
-      retail_price: 700,
-      sale_price: 1300,
-      stock: 10,
+      items: "Sneakers (1), Socks (3-pack)",
+      buyer: "Hiro Tanaka",
+      amount: 75.25,
+      balance: 25.25,
+      status: "partial",
     },
     {
-      name: "Portable Charger",
-      source: "MercadoLibre",
-      retail_price: 450,
-      sale_price: 950,
-      stock: 15,
+      items: "Laptop (1)",
+      buyer: "Isabella Rossi",
+      amount: 999.99,
+      balance: 0,
+      status: "paid",
     },
     {
-      name: "Sunglasses",
-      source: "Flipkart",
-      retail_price: 300,
-      sale_price: 650,
-      stock: 9,
+      items: "Phone Case (1), Screen Protector (1)",
+      buyer: "Jonah Brown",
+      amount: 49.5,
+      balance: 49.5,
+      status: "pending",
     },
   ];
 }
@@ -84,7 +84,7 @@ export default async function BuyersPage() {
 
   return (
     <div className="my-4  flex flex-col">
-      <h1 className="text-4xl font-bold">Items</h1>
+      <h1 className="text-4xl font-bold">Orders</h1>
       <DataTable columns={columns} data={data} />
     </div>
   );
