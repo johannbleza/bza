@@ -8,8 +8,6 @@ async function getData(): Promise<Item[]> {
   return [
     {
       name: "Graphic Tee",
-      img_link:
-        "https://image.uniqlo.com/UQ/ST3/ph/imagesgoods/465191/item/phgoods_61_465191_3x4.jpg?width=369",
       source: "Shopee",
       retail_price: 350,
       sale_price: 700,
@@ -17,8 +15,6 @@ async function getData(): Promise<Item[]> {
     },
     {
       name: "Denim Jacket",
-      img_link:
-        "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/481040/sub/goods_481040_sub14_3x4.jpg?width=369",
       source: "Lazada",
       retail_price: 1200,
       sale_price: 1800,
@@ -87,7 +83,7 @@ export default async function BuyersPage() {
   const data = await getData();
 
   return (
-    <div className="my-4 flex flex-col">
+    <div className="my-4  flex flex-col">
       <h1 className="text-4xl font-bold">Items</h1>
       <DataTable columns={columns} data={data} />
     </div>

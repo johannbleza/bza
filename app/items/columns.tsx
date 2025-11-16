@@ -13,9 +13,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Buyer } from "@/lib/types/buyer";
+import { Item } from "@/lib/types/item";
+import Image from "next/image";
 
-export const columns: ColumnDef<Buyer>[] = [
+export const columns: ColumnDef<Item>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -41,38 +42,77 @@ export const columns: ColumnDef<Buyer>[] = [
     enableHiding: false,
   },
   {
+    accessorKey: "img_link",
+    header: "Item",
+    cell: ({ row }) => {
+      const src = (row.getValue("img_link") as string) || "";
+      const alt = (row.getValue("name") as string) || "Item image";
+
+      return src ? (
+        <Image
+          src={src}
+          alt={alt}
+          width={48}
+          height={48}
+          className="rounded-md object-cover size-8"
+        />
+      ) : (
+        <div className="size-8 rounded-md bg-gray-100" />
+      );
+    },
+  },
+  {
     accessorKey: "name",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title={"Name"} />
     ),
   },
-  // {
-  //   accessorKey: "fb_link",
-  //   header: ({ column }) => (
-  //     <DataTableColumnHeader column={column} title={"Facebook"} />
-  //   ),
-  // },
   {
-    accessorKey: "address",
+    accessorKey: "source",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={"Address"} />
+      <DataTableColumnHeader column={column} title={"Source"} />
     ),
   },
   {
-    accessorKey: "contact_no",
+    accessorKey: "retail_price",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={"Contact Number"} />
+      <DataTableColumnHeader column={column} title={"Retail Price"} />
     ),
+    cell: ({ row }) => {
+      const amount = parseFloat(row.getValue("retail_price"));
+      const formatted = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "PHP",
+      }).format(amount);
+
+      return <div>{formatted}</div>;
+    },
   },
   {
-    accessorKey: "orders",
+    accessorKey: "sale_price",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title={"Orders"} />
+      <DataTableColumnHeader column={column} title={"Sale Price"} />
+    ),
+    cell: ({ row }) => {
+      const amount = parseFloat(row.getValue("sale_price"));
+      const formatted = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "PHP",
+      }).format(amount);
+
+      return <div>{formatted}</div>;
+    },
+  },
+  {
+    accessorKey: "stock",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title={"Stock"} />
     ),
   },
   {
     id: "actions",
     cell: ({ row }) => {
+      console.log(row);
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

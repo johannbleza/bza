@@ -42,7 +42,7 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarHeader>BZA Dry Goods Trading</SidebarHeader>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+          <SidebarGroupLabel>Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
